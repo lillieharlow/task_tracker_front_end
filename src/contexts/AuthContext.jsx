@@ -46,15 +46,17 @@ export function AuthProvider({ children }) {
   }, [auth]);
 
   const login = ({ userId, role, token }) => {
-    setAuth({ userId, role, token, isAuthenticated: true});
-  }
+    setAuth({ userId, role, token, isAuthenticated: true });
+  };
 
   const logout = () => {
     setAuth({ userId: null, role: null, token: null, isAuthenticated: false });
-  }
+  };
 
   return (
-    <AuthContext.Provider value={{ ...auth, login, logout }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ ...auth, login, logout }}>
+      {children}
+    </AuthContext.Provider>
   );
 }
 
